@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template_defaut.xhtml">
+
+            <ui:define name="top">
+                Transfert argent
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="idEnvoyeur" for="idEnvoyeur" /> 
+                        <h:inputText id="idEnvoyeur" size="3" value="#{transfert.idEnvoyeur}"
+                                     required="true"
+                                     converterMessage="L'id envoyeur est un nombre entier"/>
+                        <h:message for="idEnvoyeur"  infoStyle="color: green;"
+                errorStyle="color: red;"/>
+                        
+                        <h:outputLabel value="idReceveur" for="idReceveur" /> 
+                        <h:inputText id="idReceveur" size="3" value="#{transfert.idReceveur}"
+                                     required="true"
+                                     converterMessage="L'id du receveur est un nombre entier"/>
+                        <h:message for="idReceveur"  infoStyle="color: green;"
+                errorStyle="color: red;"/>
+                        
+                        <h:outputLabel value="montant" for="montant" /> 
+                        <h:inputText id="montant" size="3" value="#{transfert.montant}"
+                                     required="true"
+                                     converterMessage="Montant entier superieur a 0"/>
+                        <h:message for="montant" infoStyle="color: green;"
+                errorStyle="color: red;"/>
+                        
+                        
+                        <h:commandButton id="update" value="Enregistrer" action="#{transfert.Transferer}"/>
+                        
+                    </h:panelGrid>
+                    
+                </h:form>
+                <h:messages globalOnly="true" infoStyle="color: green;"
+                errorStyle="color: red;"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

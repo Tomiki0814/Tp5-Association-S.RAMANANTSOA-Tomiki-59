@@ -1,0 +1,21 @@
+target/
+
+# Compiled JSF pages
+*/target/classes/META-INF/maven/*
+
+# 
+*.class
+
+# JSF library dependencies
+*/target/maven-archiver/pom.properties
+*/target/maven-archiver/pom.xml
+*/target/maven-archiver/*.jar
+*/target/maven-archiver/*.zip
+
+# NetBeans IDE files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml

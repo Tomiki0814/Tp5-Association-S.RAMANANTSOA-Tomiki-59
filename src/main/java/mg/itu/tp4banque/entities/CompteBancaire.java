@@ -4,11 +4,16 @@
  */
 package mg.itu.tp4banque.entities;
 
+import jakarta.persistence.CascadeType;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -25,6 +30,13 @@ public class CompteBancaire implements Serializable {
     private String nom;
 
     private int solde;
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+    private List<OperationBancaire> operations = new ArrayList<>();  
+                    
+    public List<OperationBancaire> getOperations() {  
+      return operations;  
+    }  
 
     public String getNom() {
         return nom;

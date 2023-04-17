@@ -69,14 +69,19 @@ public class CompteBancaire implements Serializable {
 
     public void deposer(int montant) {
         solde += montant;
+        operations.add(new OperationBancaire("Crédit", montant));
+
     }
 
     public void retirer(int montant) {
         if (montant < solde) {
             solde -= montant;
+            
         } else {
             solde = 0;
         }
+        operations.add(new OperationBancaire("Débit", montant));
+
     }
 
 

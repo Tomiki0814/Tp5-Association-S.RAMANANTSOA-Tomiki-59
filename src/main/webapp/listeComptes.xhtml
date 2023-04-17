@@ -55,6 +55,13 @@
                             <h:link outcome="modification?id=#{item.id}" 
                                     value="modifier"/>
                         </p:column>
+                        <p:column width="40">
+                            <f:facet name="header">
+                                <h:outputText escape="false" value="Historique operations"/>
+                            </f:facet>
+                            <h:link outcome="historiqueOperation?idCompte=#{item.id}" 
+                                    value="Details"/>
+                        </p:column>
                     </p:dataTable>
                 </h:form>
                 <h:messages globalOnly="true" infoStyle="color: green;"

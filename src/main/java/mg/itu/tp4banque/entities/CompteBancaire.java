@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +31,16 @@ public class CompteBancaire implements Serializable {
     private String nom;
 
     private int solde;
-    
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
-    private List<OperationBancaire> operations = new ArrayList<>();  
-                    
-    public List<OperationBancaire> getOperations() {  
-      return operations;  
-    }  
+
+    @Version
+    private int version;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<OperationBancaire> operations = new ArrayList<>();
+
+    public List<OperationBancaire> getOperations() {
+        return operations;
+    }
 
     public String getNom() {
         return nom;
@@ -76,13 +80,12 @@ public class CompteBancaire implements Serializable {
     public void retirer(int montant) {
         if (montant < solde) {
             solde -= montant;
-            
+
         } else {
             solde = 0;
         }
         operations.add(new OperationBancaire("Débit", montant));
 
     }
-
 
 }

@@ -83,7 +83,7 @@ public class Mouvement implements Serializable {
       // Pour le cas où l'utilisateur a soumis le formulaire sans indiquer le type du mouvement
       return;
     }
-    if (valeurTypeMouvement.equals("****")) {
+    if (valeurTypeMouvement.equals("retrait")) {
       int retrait = (int) valeur;
       if (compte.getSolde() < retrait) {
         FacesMessage message
